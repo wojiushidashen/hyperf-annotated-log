@@ -6,7 +6,7 @@ namespace Ezijing\HyperfAnnotatedLog\Models;
 
 use Ezijing\HyperfAnnotatedLog\Traits\HasLogs;
 use Hyperf\Database\Model\Events\Creating;
-use Hyperf\Database\Model\Model;
+use Hyperf\DbConnection\Model\Model;
 use Hyperf\Snowflake\IdGeneratorInterface;
 use Hyperf\Utils\ApplicationContext;
 
@@ -28,16 +28,13 @@ class Log extends Model
 
     public function creating(Creating $event)
     {
+        $container = ApplicationContext::getContainer();
         // 使用雪花算法生成ID
         if (! $this->getKey()) {
-            $container = ApplicationContext::getContainer();
             $generator = $container->get(IdGeneratorInterface::class);
             $this->{$this->getKeyName()} = $generator->generate();
         }
-
-        /* @var self $model */
-        $model = ApplicationContext::getContainer()->get($this->getLogClass());
-        $model->setAttribute('operator', self::getUsers()[config('annotation_log.user.id')] ?? '');
-        $model->setAttribute('ip', getHttpClientIp());
+        $this->operator = self::getUsers()[config('annotation_log.user.id')] ?? '';
+        $this->ip = getHttpClientIp();
     }
 }
