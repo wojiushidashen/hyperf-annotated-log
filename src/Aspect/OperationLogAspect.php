@@ -35,8 +35,12 @@ class OperationLogAspect extends AbstractAspect
         /* @var OperationLog $operationLog */
         $operationLog = $proceedingJoinPoint->getAnnotationMetadata()->method[OperationLog::class];
         $data['desc'] = $operationLog->desc;
-        if ($operationLog->desc != '') {
-            $data['desc'] = $operationLog->desc;
+        if ($operationLog->desc == '') {
+            $data['desc'] = $operationLog->operation;
+        }
+
+        if (! is_array($result)) {
+            $result = json_decode($result->getBody()->getContents() ?? '[]', true);
         }
 
         $request = getHttpRequest();
@@ -46,7 +50,7 @@ class OperationLogAspect extends AbstractAspect
             'uri' => $request->getRequestUri(),
             'ip' => $ip,
             'request_data' => $request->all(),
-            'response_data' => json_decode($result->getBody()->getContents() ?? '[]', true),
+            'response_data' => $result,
         ]);
 
         getEventDispatcherFactory()->dispatch(new OperateLogEvent($operationLog->operation, Json::encode($data)));
