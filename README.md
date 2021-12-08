@@ -55,7 +55,7 @@ Context::set('annotation_log.user.key', $loginUser);
 ### 4. 注解操作示例
 #### 4.1 注意：
 > 1. 目前只支持控制器中的Action进行注解
-> 2. 注解到其他发放中也可以；但无法获取到方法传递的动态参数。
+> 2. 注解到其他方法中也可以；但无法获取到方法传递的动态参数。
 
 #### 4.2示例：
 ```php
@@ -93,4 +93,4 @@ class IndexController extends AbstractController
 ```
 
 ### 4.3 输出结果
-![img.png](img.png)
+![img.png](./img.png)
