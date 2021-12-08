@@ -13,15 +13,15 @@
     "autoload": {
         "psr-4": {
             "Ezijing\\HyperfAnnotatedLog\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "HyperfTest\\": "tests"
         },
         "files": [
             "src/helpers.php"
         ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "HyperfTest\\": "tests"
+        }
     },
     "authors": [
         {
