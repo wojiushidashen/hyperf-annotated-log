@@ -39,10 +39,6 @@ class OperationLogAspect extends AbstractAspect
             $data['desc'] = $operationLog->operation;
         }
 
-        if (! is_array($result)) {
-            $result = json_decode($result->getBody()->getContents() ?? '[]', true);
-        }
-
         $request = getHttpRequest();
         $ip = getHttpClientIp();
         $data = array_merge($data, [
