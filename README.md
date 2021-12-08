@@ -93,4 +93,4 @@ class IndexController extends AbstractController
 ```
 
 ### 4.3 输出结果
-![img.png](./img.png)
+![img.jpg](./img.jpg)
