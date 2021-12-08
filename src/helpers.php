@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 if (! function_exists('container')) {
     /**
      * 获取容器实例.
@@ -23,8 +25,7 @@ if (! function_exists('getHttpRequest')) {
     }
 }
 
-if (!function_exists('getHttpClientIp')) {
-
+if (! function_exists('getHttpClientIp')) {
     function getHttpClientIp()
     {
         $request = getHttpRequest();

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
     // 配置操作者的ID
     // 登录用户信息存储在 Context下

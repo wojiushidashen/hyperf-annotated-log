@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 
 namespace Ezijing\HyperfAnnotatedLog;
 
@@ -18,7 +19,7 @@ class ConfigRegister
     {
         $this->container = $container;
 
-        $this->logClass =  config('annotation_log.models.log');
+        $this->logClass = config('annotation_log.models.log');
     }
 
     public function getLogClass()

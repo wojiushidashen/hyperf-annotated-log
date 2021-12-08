@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 namespace Ezijing\HyperfAnnotatedLog\Services;
 
 use Ezijing\HyperfAnnotatedLog\Contracts\Log;
@@ -14,10 +17,6 @@ class LogService implements Log
 
     /**
      * 写日志.
-     *
-     * @param string $operation
-     * @param string $desc
-     * @return bool
      */
     public function write(string $operation, string $desc = ''): bool
     {

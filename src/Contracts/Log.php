@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 namespace Ezijing\HyperfAnnotatedLog\Contracts;
 
 interface Log
@@ -8,7 +11,6 @@ interface Log
      *
      * @param string $operation 操作说明
      * @param string $desc 操作详情
-     * @return bool
      */
     public function write(string $operation, string $desc = ''): bool;
 }
