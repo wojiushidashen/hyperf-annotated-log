@@ -16,6 +16,7 @@ composer require ezijing/hyperf-annotated-log -vvv
 ### 2. 执行数据库脚本
 1. 脚本路径
 > ./vendor/ezijing/hyperf-annotated-log/db/log.sql
+
 ```sql
 CREATE TABLE `s_logs` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键id',
