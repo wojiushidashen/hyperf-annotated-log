@@ -28,7 +28,7 @@ class Log extends Model
 
     public function creating(Creating $event)
     {
-        // 使用雪花算法生成ID
+        // 使用雪花算法生成 ID
         if (! $this->getKey()) {
             $container = ApplicationContext::getContainer();
             $generator = $container->get(IdGeneratorInterface::class);
