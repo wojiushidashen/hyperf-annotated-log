@@ -15,7 +15,7 @@ class Log extends Model
         'desc' => '',
     ];
 
-    protected $guarded = ['id', 'operator', 'ip'];
+    protected $guarded = [];
 
     public function __construct(array $attributes = [])
     {
