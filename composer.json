@@ -1,0 +1,17 @@
+{
+    "name": "ezijing/hyperf-annotated-log",
+    "description": "hyperf 注解日志",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Ezijing\\HyperfAnnotatedLog\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "啊正",
+            "email": "18435134258@163.com"
+        }
+    ],
+    "require": {}
+}
