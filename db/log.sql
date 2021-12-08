@@ -10,4 +10,4 @@ CREATE TABLE `s_logs` (
     KEY `idx_ip` (`ip`),
     KEY `idx_operate` (`operate`),
     KEY `idx_operator` (`operator`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='操作日志表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='操作日志表';
