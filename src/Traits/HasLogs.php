@@ -23,6 +23,6 @@ trait HasLogs
 
     public static function getUsers()
     {
-        return Context::get('annotation_log.user.key', []);
+        return Context::get(config('annotation_log.user.key'), []);
     }
 }
