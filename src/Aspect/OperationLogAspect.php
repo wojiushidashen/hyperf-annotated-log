@@ -50,6 +50,7 @@ class OperationLogAspect extends AbstractAspect
             'router' => getRoutePath(),
             'uri' => $request->getRequestUri(),
             'ip' => $ip,
+            'region' => getRegion($ip),
             'request_data' => $request->all(),
             'response_data' => $result,
         ]);

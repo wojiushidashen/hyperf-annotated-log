@@ -70,3 +70,27 @@ if (! function_exists('getHttpClientIp')) {
         }
     }
 }
+
+if (! function_exists('getRegion')) {
+    /**
+     * 通过IP获取城市.
+     *
+     * @param $ip
+     * @return mixed
+     */
+    function getRegion($ip = '')
+    {
+        try {
+            $data = \Zhuzhichao\IpLocationZh\Ip::find($ip);
+            $country = $data[0] ?? '中国';
+            $province = $data[1] ?? '';
+            $city = $data[2] ?? '';
+            $township = $data[3] ?? '';
+            $arr = array_unique([$country, $province, $city, $township]);
+
+            return implode('', $arr);
+        } catch (Throwable $exception) {
+            return $exception->getMessage();
+        }
+    }
+}

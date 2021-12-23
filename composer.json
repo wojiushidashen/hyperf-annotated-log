@@ -40,7 +40,9 @@
         "hyperf/di": "2.2.*",
         "hyperf/framework": "2.2.*",
         "hyperf/snowflake": "2.2.*",
-        "hyperf/utils": "2.2.*"
+        "hyperf/utils": "2.2.*",
+        "zhuzhichao/ip-location-zh": "^2.4",
+        "ext-json": "*"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.0",
