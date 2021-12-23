@@ -11,6 +11,7 @@ use Hyperf\Di\Aop\AbstractAspect;
 use Hyperf\Di\Aop\ProceedingJoinPoint;
 use Hyperf\Utils\Codec\Json;
 use Psr\Container\ContainerInterface;
+use Psr\Http\Message\ResponseInterface as PsrResponseInterface;
 
 /**
  * @Aspect
@@ -32,6 +33,10 @@ class OperationLogAspect extends AbstractAspect
     public function process(ProceedingJoinPoint $proceedingJoinPoint)
     {
         $result = $proceedingJoinPoint->process();
+        if ($result instanceof PsrResponseInterface) {
+            $result = json_decode($result->getBody()->getContents() ?? '[]', true);
+        }
+
         /* @var OperationLog $operationLog */
         $operationLog = $proceedingJoinPoint->getAnnotationMetadata()->method[OperationLog::class];
         $data['desc'] = $operationLog->desc;
