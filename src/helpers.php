@@ -26,22 +26,28 @@ if (! function_exists('getHttpRequest')) {
 }
 
 if (! function_exists('getHttpClientIp')) {
+    /**
+     * 获取客户端ip.
+     *
+     * @return mixed|string
+     */
     function getHttpClientIp()
     {
         $request = getHttpRequest();
         $serverParams = $request->getServerParams();
-        $ip = $serverParams['remote_addr'] ?? '0.0.0.0';
-        $headers = $request->getHeaders();
 
-        if (isset($headers['x-real-ip'])) {
-            $ip = $headers['x-real-ip'][0];
-        } elseif (isset($headers['x-forwarded-for'])) {
-            $ip = $headers['x-forwarded-for'][0];
-        } elseif (isset($headers['http_x_forwarded_for'])) {
-            $ip = $headers['http_x_forwarded_for'][0];
+        if (isset($serverParams['http_client_ip'])) {
+            return $serverParams['http_client_ip'];
         }
+        if (isset($serverParams['http_x_real_ip'])) {
+            return $serverParams['http_x_real_ip'];
+        }
+        if (isset($serverParams['http_x_forwarded_for'])) {
+            $arr = explode(',', $serverParams['http_x_forwarded_for']);
 
-        return $ip;
+            return $arr[0];
+        }
+        return $serverParams['remote_addr'] ?? '0.0.0.0';
     }
 
     if (! function_exists('getRoutePath')) {
