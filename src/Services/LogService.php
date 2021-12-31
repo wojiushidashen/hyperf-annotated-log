@@ -10,10 +10,14 @@ use Hyperf\Di\Annotation\Inject;
 class LogService implements Log
 {
     /**
-     * @Inject
      * @var \Ezijing\HyperfAnnotatedLog\Models\Log
      */
     protected $logModel;
+
+    public function __construct()
+    {
+        $this->logModel = make(config('annotation_log.models.log'));
+    }
 
     /**
      * 写日志.
