@@ -42,31 +42,31 @@ if (! function_exists('getHttpClientIp')) {
 
         return getHttpRequest()->getServerParams()['remote_addr'] ?? '';
     }
+}
 
-    if (! function_exists('getRoutePath')) {
-        /**
-         * 获取访问的路由.
-         *
-         * @return string
-         */
-        function getRoutePath()
-        {
-            $dispatcher = getHttpRequest()->getAttribute('Hyperf\HttpServer\Router\Dispatched');
+if (! function_exists('getRoutePath')) {
+    /**
+     * 获取访问的路由.
+     *
+     * @return string
+     */
+    function getRoutePath()
+    {
+        $dispatcher = getHttpRequest()->getAttribute('Hyperf\HttpServer\Router\Dispatched');
 
-            return sprintf('%s:%s', getHttpRequest()->getMethod(), $dispatcher->handler->route ?? getHttpRequest()->getRequestUri());
-        }
+        return sprintf('%s:%s', getHttpRequest()->getMethod(), $dispatcher->handler->route ?? getHttpRequest()->getRequestUri());
     }
+}
 
-    if (! function_exists('getEventDispatcherFactory')) {
-        /**
-         * 获取事件分发器.
-         *
-         * @return \Psr\EventDispatcher\EventDispatcherInterface
-         */
-        function getEventDispatcherFactory()
-        {
-            return container()->get(\Hyperf\Event\EventDispatcher::class);
-        }
+if (! function_exists('getEventDispatcherFactory')) {
+    /**
+     * 获取事件分发器.
+     *
+     * @return \Psr\EventDispatcher\EventDispatcherInterface
+     */
+    function getEventDispatcherFactory()
+    {
+        return container()->get(\Hyperf\Event\EventDispatcher::class);
     }
 }
 
