@@ -51,6 +51,7 @@ class OperationLogAspect extends AbstractAspect
             'uri' => $request->getRequestUri(),
             'ip' => $ip,
             'region' => getRegion($ip),
+            'user-agent' => $request->getHeader('user-agent'),
             'request_data' => $request->all(),
             'response_data' => $result,
         ]);
