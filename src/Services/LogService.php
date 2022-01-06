@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Ezijing\HyperfAnnotatedLog\Services;
 
 use Ezijing\HyperfAnnotatedLog\Contracts\Log;
-use Hyperf\Di\Annotation\Inject;
 
 class LogService implements Log
 {
@@ -16,7 +15,7 @@ class LogService implements Log
 
     public function __construct()
     {
-        $this->logModel = make(config('annotation_log.models.log'));
+        $this->logModel = make(config('annotation_log.models.log', '\Ezijing\HyperfAnnotatedLog\Models\Log'));
     }
 
     /**
